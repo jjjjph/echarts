@@ -1,0 +1,23 @@
+{
+  "id": "4120807",
+  "name": "好微助",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5961366",
+      "name": "列表",
+      "font_class": "liebiao",
+      "unicode": "ec6b",
+      "unicode_decimal": 60523
+    },
+    {
+      "icon_id": "2593623",
+      "name": "二维码",
+      "font_class": "erweima",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    }
+  ]
+}
