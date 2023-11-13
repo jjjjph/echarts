@@ -12,14 +12,15 @@ const props = defineProps({
   dataZoom: { type: Boolean, default: true }, //是否可以滑动
   tooltipConfig: { type: Object, default: () => ({}) }, //提示框设置
 });
+const emit = defineEmits();
 onMounted(function () {
-  const chart = echarts.init(node.value);
+  const chart = echarts.init(node.value as unknown as HTMLDivElement);
   var option: Object = {
     title: {
       text: "折线图",
       textStyle: {
         align: "center",
-        color: "#fff",
+        color: "#333",
         fontSize: 20,
       },
       top: "5%",
@@ -104,7 +105,7 @@ onMounted(function () {
           width: 0.5,
         },
       },
-      data: props.chartData.map((item) => item?.name),
+      data: props.chartData.map((item) => item.name),
     },
 
     yAxis: {
@@ -158,18 +159,12 @@ onMounted(function () {
   };
 
   chart.setOption(option);
-  chart.getZr().on("click", (param) => {
-    // 获取 点击的 触发点像素坐标
-    const pointInPixel = [param.offsetX, param.offsetY];
-    // 判断给定的点是否在指定的坐标系或者系列上
-    if (chart.containPixel("grid", pointInPixel)) {
-      // 获取到点击的 x轴 下标  转换为逻辑坐标
-      const xIndex = chart.convertFromPixel(
-        { seriesIndex: 0 },
-        pointInPixel
-      )[0];
-      this.$emit("chart-click", { name: this.chartData[xIndex].name });
-    }
+  //图标点击事件
+  chart.on("click", (param) => {
+    // 获取 点击的 数据下标
+    const pointInPixel = param.dataIndex;
+
+    emit("chart-click", { name: props.chartData[pointInPixel] });
   });
 });
 </script>
@@ -178,7 +173,6 @@ onMounted(function () {
 .box {
   width: 800px;
   height: 100%;
-  background-color: #080b30;
   padding: 24px;
 }
 .chart-box {
