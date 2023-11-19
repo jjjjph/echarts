@@ -1,6 +1,8 @@
 <template>
   <!-- <CompLine :chart-data="chartData" @chart-click="chartEvent"/> -->
-  <CompBar :chart-data="chartData" @chart-click="chartEvent"/>
+  <!-- <CompBar :chart-data="chartData" @chart-click="chartEvent"/> -->
+  <CompPie :chart-data="chartData" @chart-click="chartEvent"/>
+
 </template>
 
 <script setup lang="ts">
