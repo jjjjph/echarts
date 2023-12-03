@@ -66,6 +66,8 @@
   8.aliginTicks:在多个 x 轴为数值轴的时候，可以开启该配置项自动对齐刻度。只对'value'和'log'类型的轴有效
   9.data:单个类目名称。
   10.splitNumber :坐标轴的分割段数.需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
+  11. minInterval ，maxInterval，坐标轴最小/最大的间隔。只有在type:value/time时有效。一般不建议使用
+  12.interval,强制设置坐标轴分割间隔。
 ```
 
 # series
@@ -86,4 +88,45 @@
     b.position,位置。top / left / right / bottom / inside / insideLeft / insideRight / insideTop / insideBottom / insideTopLeft /   insideBottomLeft / insideTopRight / insideBottomRight。可以为数组，数组里为数字则为像素，百分比为相对百分比
     c.distance，距离图形元素的距离。当position为字符串时有效
     d.offset:[x轴，y轴].是否对文字进行偏移.
+```
+
+# dataZoom
+
+### type:'inside'
+```
+  1.type:'inside'.表示内置在坐标系中。平移：在坐标系中滑动拖拽进行数据区域平移
+  2.xAxisIndex:number/array.设置 dataZoom-inside 组件控制的 x轴.如果为number 表示控制一个轴，如果为 Array 表示控制多个轴。
+    yAxisIndex，控制y轴
+  3.filterMode:filter/weakFilter/empty/none.
+    filter:当前数据窗口外的数据，被 过滤掉。即 会 影响其他轴的数据范围。每个数据项，只要有一个维度在数据窗口外，整个数据项就会被过滤掉。
+    weakFilter:当前数据窗口外的数据，被 过滤掉。即 会 影响其他轴的数据范围。每个数据项，只有当全部维度都在数据窗口同侧外部，整个数据项才会被过滤掉。
+    empty:当前数据窗口外的数据，被 设置为空。即 不会 影响其他轴的数据范围。
+    none: 不过滤数据，只改变数轴范围。
+  4.start:number.数据窗口范围的起始百分比。
+    end:number,数据窗口范围的结束百分比
+  5.startValue/endValue:number/string/date.数据窗口范围的起始数值.如果设置了 dataZoom-inside.start 则 startValue 失效.如果轴的类型为 category，则startValue 既可以设置为 axis.data 数组的 index，也可以设置为数组值本身。 但是如果设置为数组值本身，会在内部自动转化为数组的 index
+  6.minSpan/maxSpan:number.限制窗口大小的最小/最大值，百分比。
+  7. orient:horizontal/vertical.布局方式是水平还是垂直。
+  8.zoomLock:true/false.是否锁定选择区域（或叫做数据窗口）的大小。如果为true，不能缩放，只能平移。
+  9.rangeMode:[rangeModeForStart, rangeModeForEnd].例如：rangeMode: ['value', 'percent']，表示 start 值取绝对数值，end 取百分比。
+```
+
+### type:'slider'
+```
+  1.type:'silder',滑动条型数据区域缩放组件.
+  2.selectedDataBackground,选中部分数据阴影的样式,
+  3.showDetail:boolean,拖拽时候是否显示详细数值信息。
+  4.realtime：boolean,拖动时，是否实时更新系列的视图。如果设置为 false，则只在拖拽结束的时候更新
+  5.textStyle,datazoom的文字样式。
+  6.filterMode:filter/weakFilter/empty/none.
+    filter:当前数据窗口外的数据，被 过滤掉。即 会 影响其他轴的数据范围。每个数据项，只要有一个维度在数据窗口外，整个数据项就会被过滤掉。
+    weakFilter:当前数据窗口外的数据，被 过滤掉。即 会 影响其他轴的数据范围。每个数据项，只有当全部维度都在数据窗口同侧外部，整个数据项才会被过滤掉。
+    empty:当前数据窗口外的数据，被 设置为空。即 不会 影响其他轴的数据范围。
+    none: 不过滤数据，只改变数轴范围。
+  7.start:number.数据窗口范围的起始百分比。
+    end:number,数据窗口范围的结束百分比
+  8. throttle:number.触发视图刷新的频率。单位为毫秒（ms）
+  9.zlevel：number。所有图形的 zlevel 值.
+  10. left/right/top/bottom:string/number。设置滑动条组件的位置。为数值时可以是绝对值或者百分比。
+  11.width/height.设置组件的宽度和高度。
 ```

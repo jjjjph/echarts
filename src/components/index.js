@@ -3,6 +3,7 @@ import CompLine from './CompLine.vue'
 import CompBar from './CompBar.vue'
 import CompPie from './CompPie.vue'
 import CompStackedLine from './CompStackedLine.vue'
+import CompDataZoom from './CompDataZoom.vue'
 
 function plugin(app){
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -12,6 +13,7 @@ function plugin(app){
     app.component('CompBar',CompBar)
     app.component('CompPie',CompPie)
     app.component('CompStackedLine',CompStackedLine)
+    app.component('CompDataZoom',CompDataZoom)
 }
 
 export default plugin
