@@ -130,3 +130,24 @@
   10. left/right/top/bottom:string/number。设置滑动条组件的位置。为数值时可以是绝对值或者百分比。
   11.width/height.设置组件的宽度和高度。
 ```
+
+# ToolTip
+
+```
+  1. show,显示提示框组件
+  2. trigger:'item'/'axis'/'none'.触发类型。item数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。axis坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用
+  3. axisPointer.坐标轴指示器配置项
+      a. type:line/shadow/none/cross
+      b. label:坐标轴指示器的文本标签
+          precision:'auto'/number/string.文本标签中数值的小数点精度
+          formatter:string/function.文本标签文字的格式化器
+          margin\fontStyle\width\height\overflow:'truncate'/'break'/'breakAll'.\ellipsis:在overflow配置为'truncate'的时候，可以通过该属性配置末尾显示的文本
+      c.lineStyle.axisPointer.type 为 'line' 时有效。
+      d.crossStyle.axisPointer.type 为 'cross' 时有效。
+  4.showContent.是否显示提示框浮层，默认显示.
+  5. triggerOn.提示框触发的条件.  mousemove/click.'mousemove|click'同时鼠标移动和点击时触发
+  6.enterable.鼠标是否可进入提示框浮层中.
+  7. textStyle.提示框浮层的文本样式
+
+
+```
