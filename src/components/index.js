@@ -5,6 +5,7 @@ import CompPie from './CompPie.vue'
 import CompStackedLine from './CompStackedLine.vue'
 import CompDataZoom from './CompDataZoom.vue'
 import CompToolTip from './CompToolTip.vue'
+import TypeBar from './TypeBar.vue'
 
 function plugin(app){
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -16,6 +17,7 @@ function plugin(app){
     app.component('CompStackedLine',CompStackedLine)
     app.component('CompDataZoom',CompDataZoom)
     app.component('CompToolTip',CompToolTip)
+    app.component('TypeBar',TypeBar)
 }
 
 export default plugin

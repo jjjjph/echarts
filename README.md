@@ -68,6 +68,15 @@
   10.splitNumber :坐标轴的分割段数.需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
   11. minInterval ，maxInterval，坐标轴最小/最大的间隔。只有在type:value/time时有效。一般不建议使用
   12.interval,强制设置坐标轴分割间隔。
+  13. axisLabel：坐标轴刻度标签的设置
+      nameRote：number,刻度标签的旋转角度。
+      formatter：string/function 刻度标签的内容格式器
+      padding/width/height
+      overflow:'truncate'截断/'break'换行/'breakAll'换行, 文字超出宽度是否截断或者换行，要在设置width时才有效。
+      ellipsis：string,在overflow配置为'truncate'的时候，可以通过该属性配置末尾显示的文本.超出文本的部分显示什么。
+  14. axisPointer 坐标轴指示器配置项。
+        show:显示
+        type:'line'直线指示器/'shadow'阴影指示器
 ```
 
 # series
@@ -88,6 +97,11 @@
     b.position,位置。top / left / right / bottom / inside / insideLeft / insideRight / insideTop / insideBottom / insideTopLeft /   insideBottomLeft / insideTopRight / insideBottomRight。可以为数组，数组里为数字则为像素，百分比为相对百分比
     c.distance，距离图形元素的距离。当position为字符串时有效
     d.offset:[x轴，y轴].是否对文字进行偏移.
+```
+
+### type:'bar'
+```
+  1.
 ```
 
 # dataZoom
@@ -148,6 +162,4 @@
   5. triggerOn.提示框触发的条件.  mousemove/click.'mousemove|click'同时鼠标移动和点击时触发
   6.enterable.鼠标是否可进入提示框浮层中.
   7. textStyle.提示框浮层的文本样式
-
-
 ```
